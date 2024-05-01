@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://financeai.c346k2mkm68s.eu-north-1.rds.amazonaws.com/financeAI
+    username: postgres
+    password: enes1234
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8090

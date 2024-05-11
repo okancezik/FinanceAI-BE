@@ -34,6 +34,7 @@ public class AuthManager implements AuthService {
         String jwt = tokenService.generateToken(user);
         var data =  AuthenticationResponse
                 .builder()
+                .username(user.getUsername())
                 .token(jwt)
                 .build();
         return data;
@@ -64,6 +65,7 @@ public class AuthManager implements AuthService {
         response.addHeader(HttpHeaders.SET_COOKIE,cookie.toString());
         var data =  AuthenticationResponse
                 .builder()
+                .username(user.getUsername())
                 .token(jwt)
                 .build();
         return data;

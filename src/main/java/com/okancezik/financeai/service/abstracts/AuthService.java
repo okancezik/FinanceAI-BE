@@ -2,6 +2,7 @@ package com.okancezik.financeai.service.abstracts;
 
 import com.okancezik.financeai.service.dto.requests.AuthenticationRequest;
 import com.okancezik.financeai.service.dto.responses.AuthenticationResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public interface AuthService {
@@ -12,4 +13,6 @@ public interface AuthService {
             AuthenticationRequest authenticationRequest,
             HttpServletResponse response
     );
+
+    boolean logOut(HttpServletRequest request,HttpServletResponse response);
 }

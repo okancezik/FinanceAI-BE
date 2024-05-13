@@ -7,6 +7,8 @@ import com.okancezik.financeai.repository.abstracts.UserRepository;
 import com.okancezik.financeai.service.abstracts.AuthService;
 import com.okancezik.financeai.service.dto.requests.AuthenticationRequest;
 import com.okancezik.financeai.service.dto.responses.AuthenticationResponse;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -69,5 +71,17 @@ public class AuthManager implements AuthService {
                 .token(jwt)
                 .build();
         return data;
+    }
+
+    @Override
+    public boolean logOut(HttpServletRequest request,HttpServletResponse response) {
+        ResponseCookie cookie =
+                ResponseCookie.from("accessToken",null)
+                        .httpOnly(true)
+                        .secure(false)
+                        .maxAge(0)
+                        .build();
+        response.addHeader(HttpHeaders.SET_COOKIE,cookie.toString());
+        return true;
     }
 }

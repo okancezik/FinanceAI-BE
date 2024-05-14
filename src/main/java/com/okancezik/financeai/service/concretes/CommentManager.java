@@ -1,8 +1,10 @@
 package com.okancezik.financeai.service.concretes;
 
 import com.okancezik.financeai.core.utils.mappers.ModelMapperService;
+import com.okancezik.financeai.entity.concretes.Comment;
 import com.okancezik.financeai.repository.abstracts.CommentRepository;
 import com.okancezik.financeai.service.abstracts.CommentService;
+import com.okancezik.financeai.service.dto.requests.AddCommentRequest;
 import com.okancezik.financeai.service.dto.responses.ListCommentResponseModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,5 +25,11 @@ public class CommentManager implements CommentService {
         return data.stream().map(x->this.mapperService.forResponse()
                 .map(x,ListCommentResponseModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void add(AddCommentRequest request) {
+        var data = this.mapperService.forRequest().map(request, Comment.class);
+        this.repository.save(data);
     }
 }

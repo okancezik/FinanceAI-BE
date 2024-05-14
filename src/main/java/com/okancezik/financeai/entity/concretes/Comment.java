@@ -6,29 +6,28 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "lots")
-public class Lot {
+@Table(name = "comments")
+public class Comment {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "code")
-    private String code;
+    @Column(name = "comment")
+    private String comment;
 
-    @Column(name = "value")
-    private double value;
+    @Column(name = "date")
+    private LocalDateTime loadDate = LocalDateTime.now();
 
-    @Column(name = "company")
-    private String company;
-
-    @OneToMany(mappedBy = "lot")
-    private List<Comment> comments;
+    @ManyToOne
+    @JoinColumn(name = "lot_id")
+    private Lot lot;
 }

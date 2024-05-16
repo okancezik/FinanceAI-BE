@@ -7,17 +7,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthenticationRequest {
+public class AddCommentRequestModel {
 
-    @NotBlank
     @NotNull
-    private String username;
+    @NotBlank
+    private String comment;
 
-    @NotBlank
     @NotNull
-    private String password;
+    @NotBlank
+    private int lotId;
+
+    private LocalDateTime loadDate = LocalDateTime.now();
+
 }

@@ -4,7 +4,7 @@ import com.okancezik.financeai.core.utils.mappers.ModelMapperService;
 import com.okancezik.financeai.entity.concretes.Comment;
 import com.okancezik.financeai.repository.abstracts.CommentRepository;
 import com.okancezik.financeai.service.abstracts.CommentService;
-import com.okancezik.financeai.service.dto.requests.AddCommentRequest;
+import com.okancezik.financeai.service.dto.requests.AddCommentRequestModel;
 import com.okancezik.financeai.service.dto.responses.ListCommentResponseModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class CommentManager implements CommentService {
     }
 
     @Override
-    public void add(AddCommentRequest request) {
+    public void add(AddCommentRequestModel request) {
         var data = this.mapperService.forRequest().map(request, Comment.class);
         this.repository.save(data);
     }

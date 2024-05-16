@@ -4,8 +4,8 @@ import com.okancezik.financeai.core.utils.results.DataResult;
 import com.okancezik.financeai.core.utils.results.ErrorDataResult;
 import com.okancezik.financeai.core.utils.results.SuccessDataResult;
 import com.okancezik.financeai.service.abstracts.AuthService;
-import com.okancezik.financeai.service.dto.requests.AuthenticationRequest;
-import com.okancezik.financeai.service.dto.responses.AuthenticationResponse;
+import com.okancezik.financeai.service.dto.requests.AuthenticationRequestModel;
+import com.okancezik.financeai.service.dto.responses.AuthenticationResponseModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +20,8 @@ public class AuthApi {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public DataResult<AuthenticationResponse> register(
-            @RequestBody AuthenticationRequest request)
+    public DataResult<AuthenticationResponseModel> register(
+            @RequestBody AuthenticationRequestModel request)
     {
         var data = this.authService.register(request);
         if(data!=null){
@@ -31,8 +31,8 @@ public class AuthApi {
     }
 
     @PostMapping("/login")
-    public DataResult<AuthenticationResponse> login(@RequestBody AuthenticationRequest request,
-                                        HttpServletResponse response)
+    public DataResult<AuthenticationResponseModel> login(@RequestBody AuthenticationRequestModel request,
+                                                         HttpServletResponse response)
     {
       var data =  this.authService.login(request,response);
         if(data!=null){

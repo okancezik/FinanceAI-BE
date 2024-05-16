@@ -5,7 +5,7 @@ import com.okancezik.financeai.core.utils.results.Result;
 import com.okancezik.financeai.core.utils.results.SuccessDataResult;
 import com.okancezik.financeai.core.utils.results.SuccessResult;
 import com.okancezik.financeai.service.abstracts.CommentService;
-import com.okancezik.financeai.service.dto.requests.AddCommentRequest;
+import com.okancezik.financeai.service.dto.requests.AddCommentRequestModel;
 import com.okancezik.financeai.service.dto.responses.ListCommentResponseModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +26,7 @@ public class CommentsApi {
     }
 
     @PostMapping
-    public Result add(@RequestBody AddCommentRequest request){
+    public Result add(@RequestBody AddCommentRequestModel request){
         this.service.add(request);
         return new SuccessResult("Added comment");
     }

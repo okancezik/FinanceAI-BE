@@ -31,4 +31,7 @@ public class Lot {
 
     @OneToMany(mappedBy = "lot")
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "lot")
+    private List<AIComment> aiComments;
 }

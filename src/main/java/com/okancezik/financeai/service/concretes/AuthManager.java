@@ -5,9 +5,8 @@ import com.okancezik.financeai.core.utils.mappers.ModelMapperService;
 import com.okancezik.financeai.entity.concretes.User;
 import com.okancezik.financeai.repository.abstracts.UserRepository;
 import com.okancezik.financeai.service.abstracts.AuthService;
-import com.okancezik.financeai.service.dto.requests.AuthenticationRequest;
-import com.okancezik.financeai.service.dto.responses.AuthenticationResponse;
-import jakarta.servlet.http.Cookie;
+import com.okancezik.financeai.service.dto.requests.AuthenticationRequestModel;
+import com.okancezik.financeai.service.dto.responses.AuthenticationResponseModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -29,12 +28,12 @@ public class AuthManager implements AuthService {
     private final AuthenticationManager authenticationManager;
 
     @Override
-    public AuthenticationResponse register(AuthenticationRequest authenticationRequest) {
+    public AuthenticationResponseModel register(AuthenticationRequestModel authenticationRequest) {
         User user = mapperService.forRequest().map(authenticationRequest, User.class);
         user.setPassword(passwordEncoder.encode(authenticationRequest.getPassword()));
         repository.save(user);
         String jwt = tokenService.generateToken(user);
-        var data =  AuthenticationResponse
+        var data =  AuthenticationResponseModel
                 .builder()
                 .username(user.getUsername())
                 .token(jwt)
@@ -43,8 +42,8 @@ public class AuthManager implements AuthService {
     }
 
     @Override
-    public AuthenticationResponse login(
-            AuthenticationRequest authenticationRequest,
+    public AuthenticationResponseModel login(
+            AuthenticationRequestModel authenticationRequest,
             HttpServletResponse response
     )
     {
@@ -65,7 +64,7 @@ public class AuthManager implements AuthService {
                         .maxAge(1800)
                         .build();
         response.addHeader(HttpHeaders.SET_COOKIE,cookie.toString());
-        var data =  AuthenticationResponse
+        var data =  AuthenticationResponseModel
                 .builder()
                 .username(user.getUsername())
                 .token(jwt)

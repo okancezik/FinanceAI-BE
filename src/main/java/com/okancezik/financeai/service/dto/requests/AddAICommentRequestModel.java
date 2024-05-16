@@ -13,15 +13,15 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddCommentRequest {
-
-    @NotNull
-    @NotBlank
-    private String comment;
+public class AddAICommentRequestModel {
 
     @NotNull
     @NotBlank
     private int lotId;
+
+    @NotNull
+    @NotBlank
+    private String comment;
 
     private LocalDateTime loadDate = LocalDateTime.now();
 

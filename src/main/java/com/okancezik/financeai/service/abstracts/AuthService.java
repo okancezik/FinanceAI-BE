@@ -1,16 +1,16 @@
 package com.okancezik.financeai.service.abstracts;
 
-import com.okancezik.financeai.service.dto.requests.AuthenticationRequest;
-import com.okancezik.financeai.service.dto.responses.AuthenticationResponse;
+import com.okancezik.financeai.service.dto.requests.AuthenticationRequestModel;
+import com.okancezik.financeai.service.dto.responses.AuthenticationResponseModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public interface AuthService {
 
-    AuthenticationResponse register(AuthenticationRequest authenticationRequest);
+    AuthenticationResponseModel register(AuthenticationRequestModel authenticationRequest);
 
-    AuthenticationResponse login(
-            AuthenticationRequest authenticationRequest,
+    AuthenticationResponseModel login(
+            AuthenticationRequestModel authenticationRequest,
             HttpServletResponse response
     );
 

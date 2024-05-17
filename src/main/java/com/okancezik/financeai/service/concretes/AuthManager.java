@@ -66,6 +66,7 @@ public class AuthManager implements AuthService {
         response.addHeader(HttpHeaders.SET_COOKIE,cookie.toString());
         var data =  AuthenticationResponseModel
                 .builder()
+                .id(user.getId())
                 .username(user.getUsername())
                 .token(jwt)
                 .build();

@@ -5,6 +5,7 @@ import com.okancezik.financeai.core.utils.results.SuccessDataResult;
 import com.okancezik.financeai.service.abstracts.LotService;
 import com.okancezik.financeai.service.dto.responses.ListLotResponseModel;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/lot")
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
 public class LotsApi {
 
     private final LotService service;

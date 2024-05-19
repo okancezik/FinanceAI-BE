@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/ai-comments")
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
 public class AICommentsApi {
 
     private final AICommentService service;

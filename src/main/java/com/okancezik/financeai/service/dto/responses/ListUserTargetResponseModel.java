@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ListUserTargetResponseModel {
+    private int id;
     private int userId;
     private double amount;
     private LocalDateTime loadDate;

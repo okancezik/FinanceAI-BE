@@ -2,20 +2,17 @@ package com.okancezik.financeai.api;
 
 import com.okancezik.financeai.core.utils.results.DataResult;
 import com.okancezik.financeai.core.utils.results.SuccessDataResult;
-import com.okancezik.financeai.entity.concretes.Expense;
 import com.okancezik.financeai.service.abstracts.ExpenseService;
 import com.okancezik.financeai.service.dto.responses.ListExpenseResponseModel;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/expense")
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
 public class ExpensesApi {
 
     private final ExpenseService service;

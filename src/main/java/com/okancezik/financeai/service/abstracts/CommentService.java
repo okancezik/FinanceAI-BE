@@ -8,4 +8,5 @@ import java.util.List;
 public interface CommentService {
     List<ListCommentResponseModel> getAllCommentsByLot(int id);
     void add(AddCommentRequestModel request);
+    void addMultiple(List<AddCommentRequestModel> requests);
 }

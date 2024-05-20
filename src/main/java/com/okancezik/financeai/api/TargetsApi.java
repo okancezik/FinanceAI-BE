@@ -28,7 +28,7 @@ public class TargetsApi {
     public DataResult getUserTarget(@PathVariable int id){
         var data = this.targetService.getTargetByUserId(id);
         if(data == null){
-            return new ErrorDataResult("Not found user's target");
+            return new SuccessDataResult("Not found user's target");
         }
         return new SuccessDataResult(data,"Listed user's target");
     }

@@ -31,4 +31,10 @@ public class CommentsApi {
         this.service.add(request);
         return new SuccessResult("Added comment");
     }
+
+    @PostMapping("/multiple")
+    public Result addMultiple(@RequestBody List<AddCommentRequestModel> request){
+        this.service.addMultiple(request);
+        return new SuccessResult("Added comments");
+    }
 }

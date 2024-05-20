@@ -32,4 +32,12 @@ public class CommentManager implements CommentService {
         var data = this.mapperService.forRequest().map(request, Comment.class);
         this.repository.save(data);
     }
+
+    @Override
+    public void addMultiple(List<AddCommentRequestModel> requests) {
+        var data = requests.stream()
+                .map(x->this.mapperService.forRequest().map(x,Comment.class))
+                .collect(Collectors.toList());
+        this.repository.saveAll(data);
+    }
 }

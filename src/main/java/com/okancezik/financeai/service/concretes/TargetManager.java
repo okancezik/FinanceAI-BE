@@ -14,7 +14,6 @@ import com.okancezik.financeai.service.dto.responses.ListUserTargetResponseModel
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.time.temporal.ChronoUnit;
 
 @Service

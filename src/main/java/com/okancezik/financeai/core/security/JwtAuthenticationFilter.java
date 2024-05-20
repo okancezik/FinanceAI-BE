@@ -42,7 +42,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 }
             }
         }
-        /*
+
         if (!checkCookie) {
             final String authHeader = request.getHeader("Authorization");
             final String email;
@@ -71,7 +71,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 }
             }
         }
-*/
+
         if (jwt == null) {
             filterChain.doFilter(request, response);
             return;

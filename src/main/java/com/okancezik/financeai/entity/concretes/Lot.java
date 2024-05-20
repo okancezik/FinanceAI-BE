@@ -17,7 +17,7 @@ import java.util.List;
 public class Lot {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @Column(name = "code")

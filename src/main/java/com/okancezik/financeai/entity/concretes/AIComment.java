@@ -18,7 +18,7 @@ public class AIComment {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @Column(name = "comment")

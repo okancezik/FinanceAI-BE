@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class Target {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @Column(name = "amount")

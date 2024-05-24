@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface AIAdviceService {
     void add(AddAIAdviceRequestModel requestModel);
+
+    void multipleAdd(List<AddAIAdviceRequestModel> requestModels);
     List<ListAIAdviceResponseModel> getAdvicesByUserId(int id);
 }

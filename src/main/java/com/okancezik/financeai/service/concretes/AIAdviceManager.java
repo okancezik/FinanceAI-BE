@@ -26,6 +26,14 @@ public class AIAdviceManager implements AIAdviceService {
     }
 
     @Override
+    public void multipleAdd(List<AddAIAdviceRequestModel> requestModels) {
+        var data = requestModels.stream()
+                .map(x->this.mapperService.forRequest().map(x,AIAdvice.class))
+                .collect(Collectors.toList());
+        this.repository.saveAll(data);
+    }
+
+    @Override
     public List<ListAIAdviceResponseModel> getAdvicesByUserId(int id) {
         var data = this.repository.findByUserId(id);
         if (!data.isEmpty()){

@@ -23,6 +23,12 @@ public class AIAdvicesApi {
         return new SuccessResult("Added advice");
     }
 
+    @PostMapping("/multiple")
+    public Result add(@RequestBody List<AddAIAdviceRequestModel> requestModels){
+        this.service.multipleAdd(requestModels);
+        return new SuccessResult("Added advice");
+    }
+
     @GetMapping("/{id}")
     public DataResult<List<ListAIAdviceResponseModel>> getAdvicesByUserId(@PathVariable int id){
         var data = this.service.getAdvicesByUserId(id);

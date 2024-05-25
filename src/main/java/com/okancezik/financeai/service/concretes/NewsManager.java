@@ -1,6 +1,7 @@
 package com.okancezik.financeai.service.concretes;
 
 import com.okancezik.financeai.core.utils.mappers.ModelMapperService;
+import com.okancezik.financeai.core.utils.results.SuccessResult;
 import com.okancezik.financeai.entity.concretes.News;
 import com.okancezik.financeai.repository.abstracts.NewsRepository;
 import com.okancezik.financeai.service.abstracts.NewsService;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +27,13 @@ public class NewsManager implements NewsService {
     }
 
     @Override
-    public List<ListNewsResponseModel> findAll() {
-        return null;
+    public List<ListNewsResponseModel> getAllByLotId(int id) {
+        var data = this.repository.findByLotId(id);
+        var news = data.stream()
+                .map(x->this.mapperService.forResponse().map(x,ListNewsResponseModel.class))
+                .collect(Collectors.toList());
+        return news;
     }
+
+
 }

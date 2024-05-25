@@ -1,14 +1,16 @@
 package com.okancezik.financeai.api;
 
+import com.okancezik.financeai.core.utils.results.DataResult;
 import com.okancezik.financeai.core.utils.results.Result;
+import com.okancezik.financeai.core.utils.results.SuccessDataResult;
 import com.okancezik.financeai.core.utils.results.SuccessResult;
 import com.okancezik.financeai.service.abstracts.NewsService;
 import com.okancezik.financeai.service.dto.requests.AddNewsRequestModel;
+import com.okancezik.financeai.service.dto.responses.ListNewsResponseModel;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,5 +23,11 @@ public class NewsApi {
     public Result add(@RequestBody AddNewsRequestModel requestModel){
         this.service.add(requestModel);
         return new SuccessResult("Added news");
+    }
+
+    @GetMapping("/{id}")
+    public DataResult<List<ListNewsResponseModel>> getAllByLotId(@PathVariable int id){
+        var data = this.service.getAllByLotId(id);
+        return new SuccessDataResult<>(data,"Listed news for lot");
     }
 }

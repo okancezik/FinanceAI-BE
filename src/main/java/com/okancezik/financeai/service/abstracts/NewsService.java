@@ -9,5 +9,5 @@ public interface NewsService {
 
     void add(AddNewsRequestModel requestModel);
 
-    List<ListNewsResponseModel> findAll();
+    List<ListNewsResponseModel> getAllByLotId(int id);
 }

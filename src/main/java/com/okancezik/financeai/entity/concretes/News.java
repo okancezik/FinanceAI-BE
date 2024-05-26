@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -29,4 +30,7 @@ public class News {
     @ManyToOne
     @JoinColumn(name = "lot_id")
     private Lot lot;
+
+    @OneToMany(mappedBy = "news")
+    private List<SummaryNew> summary;
 }

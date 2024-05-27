@@ -16,9 +16,14 @@ public class SummaryNewsManager implements SummaryNewsService {
     private final SummaryNewsRepository repository;
     private final ModelMapperService mapperService;
     @Override
-    public void add(AddSummaryNewsRequestModel requestModel) {
+    public boolean add(AddSummaryNewsRequestModel requestModel) {
         var data = this.mapperService.forRequest().map(requestModel, SummaryNew.class);
-        this.repository.save(data);
+        try{
+            this.repository.save(data);
+            return true;
+        }catch(Exception err){
+            return false;
+        }
     }
 
     @Override

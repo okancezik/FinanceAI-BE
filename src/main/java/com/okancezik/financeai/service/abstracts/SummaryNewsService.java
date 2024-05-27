@@ -4,7 +4,7 @@ import com.okancezik.financeai.service.dto.requests.AddSummaryNewsRequestModel;
 import com.okancezik.financeai.service.dto.responses.ListSummaryNewsResponseModel;
 
 public interface SummaryNewsService {
-    void add(AddSummaryNewsRequestModel requestModel);
+    boolean add(AddSummaryNewsRequestModel requestModel);
 
     ListSummaryNewsResponseModel getLastSummaryNew(int newsId);
 }

@@ -24,4 +24,14 @@ public class LotManager implements LotService {
                this.mapperService.forResponse().map(x, ListLotResponseModel.class))
                .collect(Collectors.toList());
     }
+
+    @Override
+    public ListLotResponseModel getLotDetail(int id) {
+        var data = this.repository.findById(id);
+        if(data.isPresent()){
+            var lot = this.mapperService.forResponse().map(data.get(),ListLotResponseModel.class);
+            return lot;
+        }
+        return null;
+    }
 }

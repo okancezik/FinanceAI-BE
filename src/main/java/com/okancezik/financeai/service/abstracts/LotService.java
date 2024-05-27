@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface LotService {
     List<ListLotResponseModel> getAllLot();
+
+    ListLotResponseModel getLotDetail(int id);
 }

@@ -1,9 +1,6 @@
 package com.okancezik.financeai.api;
 
-import com.okancezik.financeai.core.utils.results.DataResult;
-import com.okancezik.financeai.core.utils.results.Result;
-import com.okancezik.financeai.core.utils.results.SuccessDataResult;
-import com.okancezik.financeai.core.utils.results.SuccessResult;
+import com.okancezik.financeai.core.utils.results.*;
 import com.okancezik.financeai.service.abstracts.SummaryNewsService;
 import com.okancezik.financeai.service.dto.requests.AddSummaryNewsRequestModel;
 import com.okancezik.financeai.service.dto.responses.ListSummaryNewsResponseModel;
@@ -19,8 +16,12 @@ public class SummaryNewsApi {
 
     @PostMapping
     public Result add(@RequestBody AddSummaryNewsRequestModel requestModel){
-        this.service.add(requestModel);
-        return new SuccessResult("Added summary");
+        var data = this.service.add(requestModel);
+        if(data){
+            return new SuccessResult("Added summary");
+        }else{
+            return new ErrorResult("Add operation fail");
+        }
     }
 
     @GetMapping("/{id}")

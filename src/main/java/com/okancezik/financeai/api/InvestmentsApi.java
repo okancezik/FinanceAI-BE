@@ -12,6 +12,8 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/investments")
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
+
 public class InvestmentsApi {
 
     private final InvestmentService service;

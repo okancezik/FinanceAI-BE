@@ -24,6 +24,9 @@ public class News {
     @Column(name = "url")
     private String url;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "date")
     private LocalDateTime loadDate = LocalDateTime.now();
 
@@ -33,4 +36,7 @@ public class News {
 
     @OneToMany(mappedBy = "news")
     private List<SummaryNew> summary;
+
+    @OneToMany(mappedBy = "news")
+    private List<SummaryNew> scrapingNews;
 }

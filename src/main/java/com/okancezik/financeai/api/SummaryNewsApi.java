@@ -7,9 +7,12 @@ import com.okancezik.financeai.service.dto.responses.ListSummaryNewsResponseMode
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/summary-news")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
 public class SummaryNewsApi {
 
     private final SummaryNewsService service;
@@ -25,6 +28,12 @@ public class SummaryNewsApi {
     }
 
     @GetMapping("/{id}")
+    public DataResult<List<ListSummaryNewsResponseModel>> getSummariesByNewsId(@PathVariable int id){
+        var data = this.service.getSummariesByNewsId(id);
+        return new SuccessDataResult<>(data,"Listed summary");
+    }
+
+    @GetMapping("/last/{id}")
     public DataResult<ListSummaryNewsResponseModel> getLastSummaryNew(@PathVariable int id){
         var data = this.service.getLastSummaryNew(id);
         return new SuccessDataResult<>(data,"Listed summary");

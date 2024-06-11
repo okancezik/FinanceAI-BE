@@ -24,6 +24,7 @@ public class LotsApi {
         return new SuccessDataResult<>(data,"Listed all lots");
     }
 
+
     @GetMapping("/{id}")
     public DataResult<ListLotResponseModel> getLotDetail(@PathVariable int id){
         var data = this.service.getLotDetail(id);

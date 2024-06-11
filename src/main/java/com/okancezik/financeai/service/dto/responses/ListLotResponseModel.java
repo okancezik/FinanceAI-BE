@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ListLotResponseModel {
+    private int id;
     private String code;
     private double value;
     private String company;

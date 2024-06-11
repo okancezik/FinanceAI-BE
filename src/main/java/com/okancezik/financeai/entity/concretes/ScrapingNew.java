@@ -6,31 +6,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
-@Builder
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "summary_news")
-public class SummaryNew {
+@Table(name = "scraping_news")
+public class ScrapingNew {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
-    @Column(name = "summary")
-    private String summary;
-
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "date")
-    private LocalDateTime loadDate = LocalDateTime.now();
+    @Column(name = "scraped")
+    private String scraped;
 
     @ManyToOne
-    @JoinColumn(name = "news_id")
+    @JoinColumn(name = "news")
     private News news;
 }

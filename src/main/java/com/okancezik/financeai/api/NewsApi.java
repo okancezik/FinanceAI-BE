@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/news")
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
 public class NewsApi {
 
     private final NewsService service;
@@ -30,4 +31,9 @@ public class NewsApi {
         var data = this.service.getAllByLotId(id);
         return new SuccessDataResult<>(data,"Listed news for lot");
     }
+
+
+    //@PostMapping("/scrap-add")
+    //public Result addScrapingNew(){
+    //}
 }

@@ -4,13 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ListSummaryNewsResponseModel {
-    private String newsTitle;
-    private String summary;
-    private LocalDateTime loadDate;
+public class ListScrapingNewsResponseModel {
+    private int newsId;
+    private String scraped;
 }

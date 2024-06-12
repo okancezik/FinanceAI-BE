@@ -36,6 +36,8 @@ public class SummaryNewsApi {
     @GetMapping("/last/{id}")
     public DataResult<ListSummaryNewsResponseModel> getLastSummaryNew(@PathVariable int id){
         var data = this.service.getLastSummaryNew(id);
-        return new SuccessDataResult<>(data,"Listed summary");
+        return data == null
+                ? new ErrorDataResult<>("Fail list last summary")
+                : new SuccessDataResult<>(data,"Listed summary");
     }
 }

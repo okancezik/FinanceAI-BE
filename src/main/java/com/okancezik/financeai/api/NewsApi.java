@@ -32,8 +32,4 @@ public class NewsApi {
         return new SuccessDataResult<>(data,"Listed news for lot");
     }
 
-
-    //@PostMapping("/scrap-add")
-    //public Result addScrapingNew(){
-    //}
 }

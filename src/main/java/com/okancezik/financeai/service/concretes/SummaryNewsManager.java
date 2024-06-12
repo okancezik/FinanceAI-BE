@@ -44,7 +44,10 @@ public class SummaryNewsManager implements SummaryNewsService {
     @Override
     public ListSummaryNewsResponseModel getLastSummaryNew(int newsId) {
         var data = this.repository.findLastSummary(newsId);
-        var news = this.mapperService.forResponse().map(data, ListSummaryNewsResponseModel.class);
-        return news;
+        if(data.isPresent()){
+            var news = this.mapperService.forResponse().map(data, ListSummaryNewsResponseModel.class);
+            return news;
+        }
+        return null;
     }
 }

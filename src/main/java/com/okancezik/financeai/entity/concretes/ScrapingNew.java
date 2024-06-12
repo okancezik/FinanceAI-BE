@@ -23,6 +23,6 @@ public class ScrapingNew {
     private String scraped;
 
     @ManyToOne
-    @JoinColumn(name = "news")
+    @JoinColumn(name = "news_id")
     private News news;
 }
